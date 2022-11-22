@@ -1,0 +1,6 @@
+<ng-container *ngIf="commonService.LoginStatus =='false' || commonService.LoginStatus ==''||commonService.LoginStatus ==null||commonService.LoginStatus ==undefined">
+<app-login></app-login>
+</ng-container>
+<ng-container *ngIf="commonService.LoginStatus =='true'">
+<app-content></app-content>
+</ng-container>

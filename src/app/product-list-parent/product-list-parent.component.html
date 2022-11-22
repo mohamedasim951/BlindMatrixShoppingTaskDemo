@@ -1,0 +1,54 @@
+<div style="position:fixed;right:25px;z-index:5000">
+  <app-product-list-child
+    [IsCreate]="true"
+    [IsEditDelete]="false"
+  ></app-product-list-child>
+</div>
+<div class="row mt-3">
+  <div
+    *ngFor="let item of Products"
+    class="col-md-12 col-sm-10 col-lg-3 ml-5 mr-5"
+  >
+    <div class="card" style="width: 18rem;">
+      <img
+        src="{{ item.ImageUrl }}"
+        height="300px"
+        class="card-img-top"
+        alt="..."
+        (click)="gotoDetails(item.ProductId)"
+      />
+      <div class="card-body">
+        <a href="{{ '/productdetails/' + item.ProductId }}">
+          <h5 class="card-title">{{ item.Name }}</h5>
+        </a>
+        <span class="text-success" style="font-weight:bolder;"
+          ><i class="text-bold mr-2">₹</i>{{ item.Price }}</span
+        >
+        <div class="about-section">
+          <h6>About Item:</h6>
+          <div class="about-content">
+            <ul>
+              <li class="card-text" *ngIf="item.Point1">{{ item.Point1 }}</li>
+              <li class="card-text" *ngIf="item.Point2">{{ item.Point2 }}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="clearfix mt-2 mb-2">
+          <div class="float-left">
+            <a class="btn btn-primary" (click)="addToCart(item)">
+              <i class="fa fa-shopping-cart"></i>
+              Add to Cart
+            </a>
+          </div>
+          <div class="float-right">
+            <app-product-list-child
+              [IsEditDelete]="true"
+              [IsCreate]="false"
+              [ProductId]="item.ProductId"
+            ></app-product-list-child>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

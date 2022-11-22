@@ -1,0 +1,51 @@
+<div class="whole-content">
+  <div class="nav-section">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Shopping Cart</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="/product"
+            >Products<span class="sr-only">(current)</span></a
+          >
+          <a class="nav-link" href="/cartlist">Cart</a>
+        </div>
+      </div>
+      <div class="clearfix">
+        <button
+          class="btn btn-danger float-right"
+          title="logout"
+          (click)="logout()"
+        >
+          <i class="fa fa-sign-out"></i>
+        </button>
+        <a class="text-light nav-link float-right" style="font-weight: bolder;"
+          >Hi, {{ UserName | titlecase }}</a
+        >
+        <a
+          href="/cartlist"
+          class="text-light nav-link float-right"
+          style="font-weight: bolder;"
+          ><i class="fa fa-shopping-cart" style="font-size: 20px;"
+            ><sup class="text-warning" style="font-size:medium;">
+              {{ commonService.cartcountandprice().TotalItem }}</sup
+            ></i
+          ></a
+        >
+      </div>
+    </nav>
+  </div>
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

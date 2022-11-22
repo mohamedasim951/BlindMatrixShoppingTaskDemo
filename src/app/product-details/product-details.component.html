@@ -1,0 +1,50 @@
+<div class="card" *ngIf="ProductDetails">
+  <div class="clearfix m-1">
+    <button class="btn btn-primary float-right" (click)="gobacktoList()">
+      <i class="fa fa-arrow-left"></i> back To List
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-4">
+        <img src="{{ ProductDetails?.ImageUrl }}" alt="..." />
+      </div>
+      <div class="col-8">
+        <div class="">
+          <h5 class="card-title">{{ ProductDetails?.Name }}</h5>
+          <span class="text-success" style="font-weight:bolder;"
+            ><i class="text-bold mr-2">₹</i>{{ ProductDetails?.Price }}</span
+          >
+          <div class="">
+            <h6>About Item:</h6>
+            <div class="">
+              <ul>
+                <li class="card-text" *ngIf="ProductDetails?.Point1">
+                  {{ ProductDetails?.Point1 }}
+                </li>
+                <li class="card-text" *ngIf="ProductDetails?.Point2">
+                  {{ ProductDetails?.Point2 }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="clearfix mt-2 mb-2">
+            <div class="float-left">
+              <a class="btn btn-primary" (click)="addToCart(ProductDetails)">
+                <i class="fa fa-shopping-cart"></i>
+                Add to Cart
+              </a>
+            </div>
+            <div class="float-right">
+              <app-product-list-child
+                [IsEditDelete]="true"
+                [IsCreate]="false"
+                [ProductId]="ProductDetails.ProductId"
+              ></app-product-list-child>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

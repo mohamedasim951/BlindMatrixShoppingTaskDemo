@@ -1,0 +1,89 @@
+<div class="ml-2 mr-2">
+  <div class="card">
+    <div class="card-body">
+      <div class="row" *ngIf="Cart.length > 0">
+        <div class="col-md-12 col-sm-10 col-lg-9">
+          <div class="row">
+            <ng-container *ngFor="let item of Cart">
+              <div
+                class="col-md-12 col-sm-10 col-lg-2 mt-1 mb-1"
+                style="border-bottom:2px solid red;"
+              >
+                <img
+                  src="{{ item.ImageUrl }}"
+                  height="150px"
+                  width="150px"
+                  alt="..." (click)="gotoDetails(item.ProductId)"
+                />
+              </div>
+              <div
+                class="col-md-12 col-sm-10 col-lg-4 mt-1 mb-1"
+                style="border-right:2px solid red;border-bottom:2px solid red;"
+              >
+              
+        <a href="{{ '/productdetails/' + item.ProductId }}">
+                <span><b>Name : </b>{{ item.Name }}</span>
+        </a>
+                <br />
+                <span><b>Price : </b>{{ item.Price }}</span>
+                <div>
+                  <button
+                    class="fa fa-minus btn btn-warning mr-1"
+                    (click)="increaseandDecreaseCount(false, item.ProductId)"
+                  ></button>
+                  <small class="p-1">{{ item.Count }}</small>
+                  <button
+                    class="fa fa-plus btn btn-success ml-1"
+                    (click)="increaseandDecreaseCount(true, item.ProductId)"
+                  ></button>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-10 col-lg-3">
+          <div>
+            <div class="bg-secondary" style="border-radius:10px">
+              <div class="p-2">
+                <small class="text-light"
+                  >your order will be delivered free</small
+                >
+                <div class="text-light">
+                  <span>
+                    <strong>Total Items:</strong>
+                    {{ commonService.cartcountandprice().TotalItem }}
+                  </span>
+                  <br />
+                  <span>
+                    <strong>Total Amount:</strong>
+                    {{ commonService.cartcountandprice().TotalAmount }}
+                  </span>
+                </div>
+                <div class="clearfix">
+                  <button
+                    class="btn btn-primary float-left mt-1"
+                    (click)="gotoshop()"
+                  >
+                    Shop More
+                  </button>
+                  <button
+                    class="btn btn-warning float-right mt-1"
+                    (click)="commonService.proceedToBuy()"
+                  >
+                    Proceed To buy
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="Cart.length < 1">
+        <h2 class="text-center">No Items Found</h2>
+        <button class="btn btn-primary" (click)="gotoshop()">
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
