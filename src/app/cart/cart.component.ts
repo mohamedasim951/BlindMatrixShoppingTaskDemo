@@ -49,6 +49,6 @@ export class CartComponent implements OnInit {
     this.router.navigate(['/product']);
   }
   gotoDetails(pid) {
-    this.router.navigate(['/productdetails',pid]);
+    this.router.navigate(['/productdetails', pid]);
   }
 }

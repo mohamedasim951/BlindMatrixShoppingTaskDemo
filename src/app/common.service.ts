@@ -87,11 +87,11 @@ export class CommonService {
 
   saveCartList(arr: Cart[]) {
     debugger;
-    if (arr.length > 0) {
-      let data = JSON.stringify(arr);
-      localStorage.setItem('Cart', data);
-      this.Cart.next({ Cart: arr });
-    }
+    // if (arr.length > 0) {
+    let data = JSON.stringify(arr);
+    localStorage.setItem('Cart', data);
+    this.Cart.next({ Cart: arr });
+    // }
   }
 
   cartcountandprice() {
